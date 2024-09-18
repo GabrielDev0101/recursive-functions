@@ -1,34 +1,41 @@
 class Person {
-    handle(){
-        return 'handle1'
+    handle() {
+        return 'handle1';
     }
 }
 
 class OtherPerson {
-    handle(){
-        return 'handle2'
+    handle() {
+        return 'handle2';
     }
 }
 
-var classesNames = [Person, OtherPerson]
+var classList = [Person, OtherPerson];
 
 function handleClasses() {
+    let index = 0;
 
-    if (classesNames.length <= 0) {
-        console.log('END')
-        return false
+    // Looping through the class list without modifying the array
+    while (index < classList.length) {
+        console.log(classList);
+
+        // Create an instance of the current class
+        var classInstance = new classList[index]();
+
+        // Check if the method 'handle' exists before calling it
+        if (typeof classInstance.handle === 'function') {
+            console.log(classInstance.handle());
+        } else {
+            console.log('No handle method found');
+        }
+
+        // Move to the next class in the array
+        index++;
+
+        console.log(classList);
     }
 
-    console.log(classesNames)
-
-    var classesName = new classesNames[0]
-    console.log(classesName.handle())
-
-    classesNames.shift()
-
-    console.log(classesNames)
-
-    handleClasses()
+    console.log('END');
 }
 
-handleClasses()
+handleClasses();
